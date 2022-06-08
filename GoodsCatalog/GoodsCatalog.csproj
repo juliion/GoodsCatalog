@@ -98,5 +98,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\addProductIcon.ico" />
+    <Resource Include="Images\Icons\delProductIcon.ico" />
+    <Resource Include="Images\Icons\editProductIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\manageProductsIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\addCategoryIcon.ico" />
+    <Resource Include="Images\Icons\delCategoryIcon.ico" />
+    <Resource Include="Images\Icons\editCategoryIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\manageCategoriesIcon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,5 +15,47 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Управління товарами">
+                <MenuItem.Icon>
+                    <Image Source="../Images/Icons/manageProductsIcon.ico"/>
+                </MenuItem.Icon>
+                <MenuItem Header="Додати товар" >
+                    <MenuItem.Icon>
+                        <Image Source="../Images/Icons/addProductIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Редагувати товар">
+                    <MenuItem.Icon>
+                        <Image Source="../Images/Icons/editProductIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Видалити товар">
+                    <MenuItem.Icon>
+                        <Image Source="../Images/Icons/delProductIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Управління категоріями">
+                <MenuItem.Icon>
+                    <Image Source="../Images/Icons/manageCategoriesIcon.ico"/>
+                </MenuItem.Icon>
+                <MenuItem Header="Додати категорію">
+                    <MenuItem.Icon>
+                        <Image Source="../Images/Icons/addCategoryIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Редагувати категорію">
+                    <MenuItem.Icon>
+                        <Image Source="../Images/Icons/editCategoryIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Видалити категорію">
+                    <MenuItem.Icon>
+                        <Image Source="../Images/Icons/delCategoryIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
