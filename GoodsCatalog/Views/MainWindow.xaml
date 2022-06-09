@@ -57,5 +57,9 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
+        <TreeView x:Name="CategoriesList" Grid.Row="1" Grid.Column="0">
+            <TreeViewItem Header="Категорії">
+            </TreeViewItem>
+        </TreeView>
     </Grid>
 </Window>
