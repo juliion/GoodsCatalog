@@ -8,9 +8,31 @@
     </Style>
     <Style x:Key="MenuItemStyle">
         <Setter Property="ItemsControl.FontSize" Value="12"/>
-        <Setter Property="ItemsControl.Margin" Value="3"/>
         <Setter Property="ItemsControl.Padding" Value="3"/>
+    </Style>
+    <Style x:Key="Header1Style">
+        <Setter Property="ItemsControl.FontSize" Value="21"/>
+        <Setter Property="ItemsControl.Margin" Value="10"/>
+        <Setter Property="ItemsControl.FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="ItemsControl.FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="Header2Style">
+        <Setter Property="ItemsControl.FontSize" Value="15"/>
+        <Setter Property="ItemsControl.Margin" Value="10"/>
+        <Setter Property="ItemsControl.FontFamily" Value="Comic Sans MS"/>
+    </Style>
+    <Style x:Key="Header3Style">
+        <Setter Property="ItemsControl.FontSize" Value="13"/>
+        <Setter Property="ItemsControl.Margin" Value="10"/>
+        <Setter Property="ItemsControl.FontFamily" Value="Comic Sans MS"/>
+    </Style>
+    <Style x:Key="TextBlockStyle">
+        <Setter Property="ItemsControl.FontSize" Value="12"/>
+        <Setter Property="ItemsControl.Margin" Value="4"/>
+        <Setter Property="ItemsControl.FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="ItemsControl.FontWeight" Value="Light"/>
     </Style>
     <Style TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}"/>
     <Style TargetType="TreeView" BasedOn="{StaticResource PaddindStyle}"/>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}"/>
 </ResourceDictionary>

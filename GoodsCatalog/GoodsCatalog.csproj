@@ -117,5 +117,8 @@
   <ItemGroup>
     <Resource Include="Images\Icons\favicon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\defaultPhoto.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoodsCatalog"
         mc:Ignorable="d"
-        Title="Каталог товарів" Height="450" Width="800"
+        Title="Каталог товарів" MinHeight="450" MinWidth="673"
+        Height="500" Width="700"
         Icon="../Images/Icons/favicon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0.4,0.4">
             <MenuItem Header="Управління товарами">
                 <MenuItem.Icon>
                     <Image Source="../Images/Icons/manageProductsIcon.ico"/>
@@ -58,9 +59,35 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <TreeView x:Name="CategoriesList" Grid.Row="1" Grid.Column="0">
+        <TreeView x:Name="CategoriesList" Grid.Column="0" Grid.Row="1">
             <TreeViewItem Header="Категорії">
             </TreeViewItem>
         </TreeView>
+        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0.4,30,0.4,0" Grid.RowSpan="2">
+            <TextBlock Style="{StaticResource Header1Style}" Text="Каталог товарів" 
+                       DockPanel.Dock="Top"/>
+            <TextBlock Style="{StaticResource Header2Style}" Text="Назва категорії" 
+                       DockPanel.Dock="Top" TextDecorations="Underline"/>
+            <TextBlock Style="{StaticResource Header3Style}" Text="Назва товару"
+                       DockPanel.Dock="Top"/>
+            <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
+                <Image x:Name="ProductPhoto" Source="../Images/defaultPhoto.jpg"
+                       Height="100" Width="100"/>
+                <TextBlock Text="Бренд"/>
+                <TextBlock Text="Опис"
+                           Width="180"/>
+            </StackPanel>
+            <ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Назва" Width="180"/>
+                        <GridViewColumn Header="Розмір" Width="100"/>
+                        <GridViewColumn Header="Колір" Width="100"/>
+                        <GridViewColumn Header="Матеріал" Width="100"/>
+                        <GridViewColumn Header="Ціна" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
     </Grid>
 </Window>
