@@ -86,6 +86,12 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Repos\Implements\BrendsRepo.cs" />
+    <Compile Include="Repos\Implements\CategoriesRepos.cs" />
+    <Compile Include="Repos\Implements\ProductsRepo.cs" />
+    <Compile Include="Repos\Interfaces\IBrandsRepo.cs" />
+    <Compile Include="Repos\Interfaces\ICategoriesRepo.cs" />
+    <Compile Include="Repos\Interfaces\IProductsRepo.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
