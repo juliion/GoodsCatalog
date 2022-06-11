@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using GoodsCatalog.Models;
 using GoodsCatalog.Repos.Interfaces;
+using GoodsCatalog.Dapper;
 
 namespace GoodsCatalog.Repos.Implements
 {
     public class BrendsRepo : IBrandsRepo
     {
-        public List<Product> GetAllBrands()
+        public List<Brand> GetAllBrands()
         {
-            throw new NotImplementedException();
+            return QueryManager.ExecuteSelect<Brand>("GetAllBrands").ToList();
         }
     }
 }

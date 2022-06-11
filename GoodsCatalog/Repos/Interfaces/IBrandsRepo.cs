@@ -9,6 +9,6 @@ namespace GoodsCatalog.Repos.Interfaces
 {
     public interface IBrandsRepo
     {
-        List<Product> GetAllBrands();
+        List<Brand> GetAllBrands();
     }
 }
