@@ -9,7 +9,7 @@ using GoodsCatalog.Dapper;
 
 namespace GoodsCatalog.Repos.Implements
 {
-    public class BrendsRepo : IBrandsRepo
+    public class BrandsRepo : IBrandsRepo
     {
         public List<Brand> GetAllBrands()
         {
