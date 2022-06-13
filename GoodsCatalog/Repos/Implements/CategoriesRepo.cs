@@ -10,7 +10,7 @@ using GoodsCatalog.Dapper;
 
 namespace GoodsCatalog.Repos.Implements
 {
-    public class CategoriesRepos : ICategoriesRepo
+    public class CategoriesRepo : ICategoriesRepo
     {
         public void AddNewCategory(Category newCategory)
         {

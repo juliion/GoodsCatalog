@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GoodsCatalog.ViewModel;
 
 namespace GoodsCatalog.Views
 {
@@ -20,9 +21,12 @@ namespace GoodsCatalog.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly AppViewModel _appViewModel;
         public MainWindow()
         {
+            _appViewModel = new AppViewModel();
             InitializeComponent();
+            this.DataContext = _appViewModel;
         }
     }
 }
