@@ -38,6 +38,14 @@ namespace GoodsCatalog.ViewModel
                 Products.Add(product);
             }
         }
+        public void LoadProductsByCategoryId(int categoryId)
+        {
+            Products.Clear();
+            foreach (var product in _productsRepo.GetProductsByCategory(categoryId))
+            {
+                Products.Add(product);
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

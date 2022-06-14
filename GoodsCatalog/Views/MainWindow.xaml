@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GoodsCatalog"
         mc:Ignorable="d"
         Title="Каталог товарів" MinHeight="450" MinWidth="673"
-        Height="500" Width="800"
+        Height="600" Width="800"
         Icon="../Images/Icons/favicon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -70,25 +70,32 @@
             <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0.4,30,0.4,0" Grid.RowSpan="2">
             <TextBlock Style="{StaticResource Header1Style}" Text="Каталог товарів" 
                        DockPanel.Dock="Top"/>
-            <TextBlock Style="{StaticResource Header2Style}" Text="Назва категорії" 
+            <TextBlock Style="{StaticResource Header2Style}" Text="{Binding CategoriesVM.SelectedCategory.Name}" 
                        DockPanel.Dock="Top" TextDecorations="Underline"/>
-            <TextBlock Style="{StaticResource Header3Style}" Text="Назва товару"
+            <TextBlock Style="{StaticResource Header3Style}" Text="{Binding ProductsVM.SelectedProduct.Name}"
                        DockPanel.Dock="Top"/>
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
-                <Image x:Name="ProductPhoto" Source="../Images/defaultPhoto.jpg"
-                       Height="100" Width="100"/>
+                <Image x:Name="ProductPhoto" Source="{Binding ProductsVM.SelectedProduct.Photo}"
+                       Height="200" Width="200"/>
                 <TextBlock Text="Бренд"/>
-                <TextBlock Text="Опис"
-                           Width="180"/>
+                <TextBlock Text="{Binding ProductsVM.SelectedProduct.Description}" TextWrapping="Wrap"
+                           Width="380" Foreground="DarkGray"/>
+               
             </StackPanel>
-            <ListView>
+            <ListView x:Name="ProductsList" ItemsSource="{Binding ProductsVM.Products}"
+                      SelectedItem="{Binding ProductsVM.SelectedProduct}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Назва" Width="180"/>
-                        <GridViewColumn Header="Розмір" Width="100"/>
-                        <GridViewColumn Header="Колір" Width="100"/>
-                        <GridViewColumn Header="Матеріал" Width="100"/>
-                        <GridViewColumn Header="Ціна" Width="80"/>
+                        <GridViewColumn Header="Назва" Width="180"
+                                        DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Розмір" Width="100"
+                                        DisplayMemberBinding="{Binding Size}"/>
+                        <GridViewColumn Header="Колір" Width="100"
+                                        DisplayMemberBinding="{Binding Color}"/>
+                        <GridViewColumn Header="Матеріал" Width="100"
+                                        DisplayMemberBinding="{Binding Material}"/>
+                        <GridViewColumn Header="Ціна" Width="80"
+                                        DisplayMemberBinding="{Binding Price}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

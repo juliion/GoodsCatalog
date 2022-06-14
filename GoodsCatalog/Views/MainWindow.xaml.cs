@@ -35,6 +35,7 @@ namespace GoodsCatalog.Views
             if (selectedCategory != null)
             {
                 SelectedItemHelper.Content = selectedCategory;
+                _appViewModel.ProductsVM.LoadProductsByCategoryId(selectedCategory.Id);
             }
         }
     }

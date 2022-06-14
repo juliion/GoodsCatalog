@@ -59,7 +59,7 @@ namespace GoodsCatalog.Repos.Implements
         {
             DynamicParameters paramList = new DynamicParameters();
             paramList.Add("@categoryId", categoryId);
-            return QueryManager.ExecuteSelect<Product>("GetAllProducts", paramList).ToList();
+            return QueryManager.ExecuteSelect<Product>("GetProductsByCategory", paramList).ToList();
         }
     }
 }
