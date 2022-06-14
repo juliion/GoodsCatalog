@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GoodsCatalog.Models;
 using GoodsCatalog.ViewModel;
 
 namespace GoodsCatalog.Views
@@ -27,6 +28,14 @@ namespace GoodsCatalog.Views
             _appViewModel = new AppViewModel();
             InitializeComponent();
             this.DataContext = _appViewModel;
+        }
+        private void CategoriesList_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            Category selectedCategory = e.NewValue as Category;
+            if (selectedCategory != null)
+            {
+                SelectedItemHelper.Content = selectedCategory;
+            }
         }
     }
 }

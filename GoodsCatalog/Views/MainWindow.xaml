@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:GoodsCatalog"
         mc:Ignorable="d"
         Title="Каталог товарів" MinHeight="450" MinWidth="673"
-        Height="500" Width="700"
+        Height="500" Width="800"
         Icon="../Images/Icons/favicon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -59,11 +59,15 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <TreeView x:Name="CategoriesList" Grid.Column="0" Grid.Row="1">
-            <TreeViewItem Header="Категорії">
-            </TreeViewItem>
+        <ContentControl x:Name="SelectedItemHelper" Content="{Binding CategoriesVM.SelectedCategory, Mode=OneWayToSource}" Visibility="Collapsed"/>
+        <TreeView x:Name="CategoriesList" Grid.Column="0" Grid.Row="1"
+                  SelectedItemChanged="CategoriesList_SelectedItemChanged">
+            <TreeViewItem Header="Категорії"
+                          ItemsSource="{Binding CategoriesVM.Categories}"
+                          DisplayMemberPath="Name">
+             </TreeViewItem>
         </TreeView>
-        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0.4,30,0.4,0" Grid.RowSpan="2">
+            <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0.4,30,0.4,0" Grid.RowSpan="2">
             <TextBlock Style="{StaticResource Header1Style}" Text="Каталог товарів" 
                        DockPanel.Dock="Top"/>
             <TextBlock Style="{StaticResource Header2Style}" Text="Назва категорії" 
