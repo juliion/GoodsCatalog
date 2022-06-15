@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,5 +63,30 @@ namespace GoodsCatalog.Views
             BrandsViewModel brandVM = _appViewModel.BrandsVM;
             brandVM.BrandOfSelectedProduct = brandVM.FindBrandOfSelectedProduct(_appViewModel.ProductsVM.SelectedProduct);
         }
+
+        private void AddNewCategory_Click(object sender, RoutedEventArgs e)
+        {
+            CategoriesViewModel categoriesVM = _appViewModel.CategoriesVM;
+            CategoryEditor categoryEditor = new CategoryEditor(categoriesVM);
+            categoryEditor.ActCategoryBtn.Content = "Додати категорію";
+            categoryEditor.ActCategoryBtn.Command = categoriesVM.AddCategory;
+            categoriesVM.SelectedCategory = new Category();
+            categoryEditor.ShowDialog();
+        }
+
+        private void EditCategory_Click(object sender, RoutedEventArgs e)
+        {
+            CategoriesViewModel categoriesVM = _appViewModel.CategoriesVM;
+            if (categoriesVM.SelectedCategory != null)
+            {
+                CategoryEditor categoryEditor = new CategoryEditor(categoriesVM);
+                categoryEditor.ActCategoryBtn.Content = "Редагувати категорію";
+                categoryEditor.ActCategoryBtn.Command = categoriesVM.EditCategory;
+                categoryEditor.ShowDialog();
+            }
+            else
+                System.Windows.Forms.MessageBox.Show("Оберіть категорію, яку потрібно відредагувати!");
+        }
+
     }
 }
