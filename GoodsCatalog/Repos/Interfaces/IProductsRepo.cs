@@ -14,5 +14,7 @@ namespace GoodsCatalog.Repos.Interfaces
         void DelProduct(int productId);
         void EditProduct(int productId, Product newProduct);
         List<Product> GetProductsByCategory(int categoryId);
+        List<Product> GetProductsByBrand(int brandId);
+        List<Product> GetProductsByBrandAndCategory(int brandId, int categoryId);
     }
 }

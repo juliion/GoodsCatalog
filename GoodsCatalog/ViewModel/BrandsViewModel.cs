@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using GoodsCatalog.Models;
 using GoodsCatalog.Repos.Interfaces;
+using GoodsCatalog.Commands;
 
 namespace GoodsCatalog.ViewModel
 {
@@ -38,7 +39,10 @@ namespace GoodsCatalog.ViewModel
                 Brands.Add(brand);
             }
         }
-
+        public Brand FindBrandOfSelectedProduct(Product selectedProduct)
+        {
+            return Brands.FirstOrDefault(b => b.Id == selectedProduct?.BrandId);
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

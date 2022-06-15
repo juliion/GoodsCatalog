@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -59,15 +59,25 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <ContentControl x:Name="SelectedItemHelper" Content="{Binding CategoriesVM.SelectedCategory, Mode=OneWayToSource}" Visibility="Collapsed"/>
-        <TreeView x:Name="CategoriesList" Grid.Column="0" Grid.Row="1"
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <ContentControl x:Name="SelectedItemHelperCategory" Content="{Binding CategoriesVM.SelectedCategory, Mode=OneWayToSource}" Visibility="Collapsed"/>
+            <TreeView x:Name="CategoriesList"  BorderBrush="White"
                   SelectedItemChanged="CategoriesList_SelectedItemChanged">
-            <TreeViewItem Header="Категорії"
+                <TreeViewItem Header="Категорії" 
                           ItemsSource="{Binding CategoriesVM.Categories}"
                           DisplayMemberPath="Name">
-             </TreeViewItem>
-        </TreeView>
-            <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0.4,30,0.4,0" Grid.RowSpan="2">
+                </TreeViewItem>
+            </TreeView>
+            <ContentControl x:Name="SelectedItemHelperBrand" Content="{Binding BrandsVM.SelectedBrand, Mode=OneWayToSource}" Visibility="Collapsed"/>
+            <TreeView x:Name="BrandsList" BorderBrush="White"
+                  SelectedItemChanged="BrandsList_SelectedItemChanged">
+                <TreeViewItem Header="Бренды"
+                          ItemsSource="{Binding BrandsVM.Brands}"
+                          DisplayMemberPath="Name">
+                </TreeViewItem>
+            </TreeView>
+        </StackPanel>
+        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="0.4,30,0.4,0" Grid.RowSpan="2">
             <TextBlock Style="{StaticResource Header1Style}" Text="Каталог товарів" 
                        DockPanel.Dock="Top"/>
             <TextBlock Style="{StaticResource Header2Style}" Text="{Binding CategoriesVM.SelectedCategory.Name}" 
@@ -77,13 +87,14 @@
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
                 <Image x:Name="ProductPhoto" Source="{Binding ProductsVM.SelectedProduct.Photo}"
                        Height="200" Width="200"/>
-                <TextBlock Text="Бренд"/>
+                <TextBlock Text="{Binding BrandsVM.BrandOfSelectedProduct.Name}"/>
                 <TextBlock Text="{Binding ProductsVM.SelectedProduct.Description}" TextWrapping="Wrap"
                            Width="380" Foreground="DarkGray"/>
                
             </StackPanel>
             <ListView x:Name="ProductsList" ItemsSource="{Binding ProductsVM.Products}"
-                      SelectedItem="{Binding ProductsVM.SelectedProduct}">
+                      SelectedItem="{Binding ProductsVM.SelectedProduct}"
+                      SelectionChanged="ProductsList_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Назва" Width="180"

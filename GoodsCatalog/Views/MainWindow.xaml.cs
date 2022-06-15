@@ -34,9 +34,33 @@ namespace GoodsCatalog.Views
             Category selectedCategory = e.NewValue as Category;
             if (selectedCategory != null)
             {
-                SelectedItemHelper.Content = selectedCategory;
-                _appViewModel.ProductsVM.LoadProductsByCategoryId(selectedCategory.Id);
+                SelectedItemHelperCategory.Content = selectedCategory;
+                Brand selectedBrand = _appViewModel.BrandsVM.SelectedBrand;
+                if (selectedBrand != null)
+                    _appViewModel.ProductsVM.LoadProductsByBrandAndCategory(selectedBrand.Id, selectedCategory.Id);
+                else
+                    _appViewModel.ProductsVM.LoadProductsByCategory(selectedCategory.Id);
             }
+        }
+
+        private void BrandsList_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            Brand selectedBrand = e.NewValue as Brand;
+            if (selectedBrand != null)
+            {
+                SelectedItemHelperBrand.Content = selectedBrand;
+                Category selectedCategory =_appViewModel.CategoriesVM.SelectedCategory;
+                if (selectedCategory != null)
+                    _appViewModel.ProductsVM.LoadProductsByBrandAndCategory(selectedBrand.Id, selectedCategory.Id);
+                else
+                    _appViewModel.ProductsVM.LoadProductsByBrand(selectedBrand.Id);
+            }
+        }
+
+        private void ProductsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BrandsViewModel brandVM = _appViewModel.BrandsVM;
+            brandVM.BrandOfSelectedProduct = brandVM.FindBrandOfSelectedProduct(_appViewModel.ProductsVM.SelectedProduct);
         }
     }
 }

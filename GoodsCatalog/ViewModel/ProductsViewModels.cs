@@ -29,6 +29,7 @@ namespace GoodsCatalog.ViewModel
                 return _selectedProduct;
             }
         }
+
         public ProductsViewModels(IProductsRepo productsRepo)
         {
             _productsRepo = productsRepo;
@@ -38,7 +39,7 @@ namespace GoodsCatalog.ViewModel
                 Products.Add(product);
             }
         }
-        public void LoadProductsByCategoryId(int categoryId)
+        public void LoadProductsByCategory(int categoryId)
         {
             Products.Clear();
             foreach (var product in _productsRepo.GetProductsByCategory(categoryId))
@@ -46,7 +47,22 @@ namespace GoodsCatalog.ViewModel
                 Products.Add(product);
             }
         }
-
+        public void LoadProductsByBrand(int brandId)
+        {
+            Products.Clear();
+            foreach (var product in _productsRepo.GetProductsByBrand(brandId))
+            {
+                Products.Add(product);
+            }
+        }
+        public void LoadProductsByBrandAndCategory(int brandId, int categoryId)
+        {
+            Products.Clear();
+            foreach (var product in _productsRepo.GetProductsByBrandAndCategory(brandId, categoryId))
+            {
+                Products.Add(product);
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

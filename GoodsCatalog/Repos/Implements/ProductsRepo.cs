@@ -61,5 +61,18 @@ namespace GoodsCatalog.Repos.Implements
             paramList.Add("@categoryId", categoryId);
             return QueryManager.ExecuteSelect<Product>("GetProductsByCategory", paramList).ToList();
         }
+        public List<Product> GetProductsByBrand(int brandId)
+        {
+            DynamicParameters paramList = new DynamicParameters();
+            paramList.Add("@brandId", brandId);
+            return QueryManager.ExecuteSelect<Product>("GetProductsByBrand", paramList).ToList();
+        }
+        public List<Product> GetProductsByBrandAndCategory(int brandId, int categoryId)
+        {
+            DynamicParameters paramList = new DynamicParameters();
+            paramList.Add("@brandId", brandId);
+            paramList.Add("@categoryId", categoryId);
+            return QueryManager.ExecuteSelect<Product>("GetProductsByBrandAndCategory", paramList).ToList();
+        }
     }
 }
