@@ -16,7 +16,7 @@ namespace GoodsCatalog.ViewModel
     {
         private readonly IBrandsRepo _brandsRepo;
         private Brand _selectedBrand;
-
+        private Brand _brandOfSelectedProduct;
         public ObservableCollection<Brand> Brands { get; set; }
         public Brand SelectedBrand
         {
@@ -28,6 +28,18 @@ namespace GoodsCatalog.ViewModel
             get
             {
                 return _selectedBrand;
+            }
+        }
+        public Brand BrandOfSelectedProduct
+        {
+            set
+            {
+                _brandOfSelectedProduct = value;
+                OnPropertyChanged("BrandOfSelectedProduct");
+            }
+            get
+            {
+                return _brandOfSelectedProduct;
             }
         }
         public BrandsViewModel(IBrandsRepo brandsRepo)
