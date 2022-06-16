@@ -80,6 +80,7 @@ namespace GoodsCatalog.ViewModel
                 {
                     if(SelectedCategory != null)
                     {
+                        _categoriesRepo.DelCategory(SelectedCategory.Id);
                         Categories.Remove(SelectedCategory);
                     }
                 },
