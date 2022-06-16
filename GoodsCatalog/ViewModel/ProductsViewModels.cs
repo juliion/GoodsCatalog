@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using GoodsCatalog.Models;
 using GoodsCatalog.Repos.Interfaces;
+using GoodsCatalog.Commands;
 
 namespace GoodsCatalog.ViewModel
 {
@@ -29,7 +30,49 @@ namespace GoodsCatalog.ViewModel
                 return _selectedProduct;
             }
         }
-
+        private RelayCommand _addProduct;
+        public RelayCommand AddProduct
+        {
+            get
+            {
+                return _addProduct ?? (_addProduct = new RelayCommand(obj =>
+                {
+                    Product newProduct = obj as Product;
+                    Products.Add(newProduct);
+                    _productsRepo.AddNewProduct(newProduct);
+                }));
+            }
+        }
+        private RelayCommand _editProduct;
+        public RelayCommand EditProduct
+        {
+            get
+            {
+                return _editProduct ?? (_editProduct = new RelayCommand(obj =>
+                {
+                    int productId = SelectedProduct.Id;
+                    Product newProduct = obj as Product;
+                    _productsRepo.EditProduct(productId, newProduct);
+                },
+                (obj) => Products.Count > 0));
+            }
+        }
+        private RelayCommand _delProduct;
+        public RelayCommand DelProduct
+        {
+            get
+            {
+                return _delProduct ?? (_delProduct = new RelayCommand(obj =>
+                {
+                    if (SelectedProduct != null)
+                    {
+                        _productsRepo.DelProduct(SelectedProduct.Id);
+                        Products.Remove(SelectedProduct);
+                    }
+                },
+                (obj) => Products.Count > 0));
+            }
+        }
         public ProductsViewModels(IProductsRepo productsRepo)
         {
             _productsRepo = productsRepo;

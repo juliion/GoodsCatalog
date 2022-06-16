@@ -17,6 +17,7 @@ namespace GoodsCatalog.ViewModel
     {
         private readonly ICategoriesRepo _categoriesRepo;
         private Category _selectedCategory;
+        private Category _categoryOfSelectedProduct;
 
         public ObservableCollection<Category> Categories { get; set; }
         public Category SelectedCategory
@@ -29,6 +30,18 @@ namespace GoodsCatalog.ViewModel
             get
             {
                 return _selectedCategory;
+            }
+        }
+        public Category CategoryOfSelectedProduct
+        {
+            set
+            {
+                _categoryOfSelectedProduct = value;
+                OnPropertyChanged("CategoryOfSelectedProduct");
+            }
+            get
+            {
+                return _categoryOfSelectedProduct;
             }
         }
         private RelayCommand _addCategory;
@@ -66,7 +79,9 @@ namespace GoodsCatalog.ViewModel
                 return _delCategory ?? (_delCategory = new RelayCommand(obj =>
                 {
                     if(SelectedCategory != null)
+                    {
                         Categories.Remove(SelectedCategory);
+                    }
                 },
                 (obj) => Categories.Count > 0));
             }
@@ -79,6 +94,10 @@ namespace GoodsCatalog.ViewModel
             {
                 Categories.Add(category);
             }
+        }
+        public Category FindCategoryOfSelectedProduct(Product selectedProduct)
+        {
+            return Categories.FirstOrDefault(c => c.Id == selectedProduct?.Id);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

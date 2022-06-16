@@ -75,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\ProductEditor.xaml.cs">
+      <DependentUpon>ProductEditor.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\BaseStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +116,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ProductEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -171,6 +178,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>GoodsCatalog.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\product5.jpg" />
     <Resource Include="Images\product4.jpg" />
     <Resource Include="Images\product3.jpg" />
     <Resource Include="Images\product2.jpg" />

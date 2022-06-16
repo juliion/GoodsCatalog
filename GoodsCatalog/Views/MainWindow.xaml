@@ -22,17 +22,20 @@
                 <MenuItem.Icon>
                     <Image Source="../Images/Icons/manageProductsIcon.ico"/>
                 </MenuItem.Icon>
-                <MenuItem Header="Додати товар" >
+                <MenuItem x:Name="AddNewProduct" Header="Додати товар"
+                          Click="AddNewProduct_Click">
                     <MenuItem.Icon>
                         <Image Source="../Images/Icons/addProductIcon.ico"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Редагувати товар">
+                <MenuItem x:Name="EditProduct" Header="Редагувати товар"
+                          Click="EditProduct_Click">
                     <MenuItem.Icon>
                         <Image Source="../Images/Icons/editProductIcon.ico"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Видалити товар">
+                <MenuItem x:Name="DeleteProduct" Header="Видалити товар"
+                          Command="{Binding ProductsVM.DelProduct}">
                     <MenuItem.Icon>
                         <Image Source="../Images/Icons/delProductIcon.ico"/>
                     </MenuItem.Icon>
@@ -89,7 +92,7 @@
                        DockPanel.Dock="Top"/>
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
                 <Image x:Name="ProductPhoto" Source="{Binding ProductsVM.SelectedProduct.Photo}"
-                       Height="200" Width="200"/>
+                       Height="200" Width="200" Margin="0, 0, 0, 10"/>
                 <TextBlock Text="{Binding BrandsVM.BrandOfSelectedProduct.Name}"/>
                 <TextBlock Text="{Binding ProductsVM.SelectedProduct.Description}" TextWrapping="Wrap"
                            Width="380" Foreground="DarkGray"/>

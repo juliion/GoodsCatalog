@@ -1,0 +1,47 @@
+﻿<Window x:Class="GoodsCatalog.Views.ProductEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GoodsCatalog.Views"
+        mc:Ignorable="d"
+        Title="Редактор продуктів" Height="490" Width="180"
+        Icon="../Images/Icons/favicon.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="20">
+            <TextBlock Text="Нова назва товару:"/>
+            <TextBox x:Name="NameField"
+                     Text="{Binding ProductsVM.SelectedProduct.Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Розмір продукту:"/>
+            <TextBox x:Name="SizeField" 
+                     Text="{Binding ProductsVM.SelectedProduct.Size, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Колір продукту:"/>
+            <TextBox x:Name="ColorField"
+                     Text="{Binding ProductsVM.SelectedProduct.Color, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Матеріал продукту:"/>
+            <TextBox x:Name="MaterialField"
+                     Text="{Binding ProductsVM.SelectedProduct.Material, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Ціна продукту:"/>
+            <TextBox x:Name="PriceField"
+                     Text="{Binding ProductsVM.SelectedProduct.Price, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Опис продукту:"/>
+            <TextBox x:Name="DescriptionField"
+                     Text="{Binding ProductsVM.SelectedProduct.Description, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Категорія:"/>
+            <ComboBox x:Name="CategoriesList"
+                      SelectedItem="{Binding CategoriesVM.CategoryOfSelectedProduct}"
+                      ItemsSource="{Binding CategoriesVM.Categories}"
+                      DisplayMemberPath="Name"/>
+            <TextBlock Text="Бренд:"/>
+            <ComboBox x:Name="BrandsList"
+                      SelectedItem="{Binding BrandsVM.BrandOfSelectedProduct}"
+                      ItemsSource="{Binding BrandsVM.Brands}"
+                      DisplayMemberPath="Name"/>
+            <Button x:Name="ActBtn" Content="Назва операціїї"
+                    Margin="0, 20, 0, 0"
+                    Click="ActBtn_Click"
+                    CommandParameter="{Binding ProductsVM.SelectedProduct}"/>
+        </StackPanel>
+    </Grid>
+</Window>

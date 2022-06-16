@@ -60,8 +60,11 @@ namespace GoodsCatalog.Views
 
         private void ProductsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BrandsViewModel brandVM = _appViewModel.BrandsVM;
-            brandVM.BrandOfSelectedProduct = brandVM.FindBrandOfSelectedProduct(_appViewModel.ProductsVM.SelectedProduct);
+            BrandsViewModel brandsVM = _appViewModel.BrandsVM;
+            Product selectedProduct = _appViewModel.ProductsVM.SelectedProduct;
+            CategoriesViewModel categoriesVM = _appViewModel.CategoriesVM;
+            brandsVM.BrandOfSelectedProduct = brandsVM.FindBrandOfSelectedProduct(selectedProduct);
+            categoriesVM.CategoryOfSelectedProduct = categoriesVM.FindCategoryOfSelectedProduct(selectedProduct);
         }
 
         private void AddNewCategory_Click(object sender, RoutedEventArgs e)
@@ -88,5 +91,29 @@ namespace GoodsCatalog.Views
                 System.Windows.Forms.MessageBox.Show("Оберіть категорію, яку потрібно відредагувати!");
         }
 
+        private void AddNewProduct_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsViewModels productsVM = _appViewModel.ProductsVM;
+            ProductEditor productEditor = new ProductEditor(_appViewModel);
+            productEditor.ActBtn.Content = "Додати товар";
+            productEditor.ActBtn.Command =  productsVM.AddProduct;
+            productsVM.SelectedProduct = new Product();
+            productEditor.ShowDialog();
+        }
+
+        private void EditProduct_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsViewModels productsVM = _appViewModel.ProductsVM;
+            if (productsVM.SelectedProduct != null)
+            {
+                ProductEditor productEditor = new ProductEditor(_appViewModel);
+                productEditor.ActBtn.Content = "Редагувати товар";
+                productEditor.ActBtn.Command = productsVM.EditProduct;
+                productEditor.ShowDialog();
+
+            }
+            else
+                System.Windows.Forms.MessageBox.Show("Оберіть товар, який потрібно відредагувати!");
+        }
     }
 }
