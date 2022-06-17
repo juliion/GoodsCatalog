@@ -13,7 +13,7 @@ namespace GoodsCatalog.Models
         public string Size { get; set; }
         public string Color { get; set; }
         public string Material { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
         public string Description { get; set; }

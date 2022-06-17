@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using GoodsCatalog.Models;
 using GoodsCatalog.Repos.Interfaces;
+using GoodsCatalog.Commands;
+using GoodsCatalog.Views;
 
 namespace GoodsCatalog.ViewModel
 {
@@ -15,6 +17,7 @@ namespace GoodsCatalog.ViewModel
     {
         private readonly ICategoriesRepo _categoriesRepo;
         private Category _selectedCategory;
+        private Category _categoryOfSelectedProduct;
 
         public ObservableCollection<Category> Categories { get; set; }
         public Category SelectedCategory
@@ -29,6 +32,61 @@ namespace GoodsCatalog.ViewModel
                 return _selectedCategory;
             }
         }
+        public Category CategoryOfSelectedProduct
+        {
+            set
+            {
+                _categoryOfSelectedProduct = value;
+                OnPropertyChanged("CategoryOfSelectedProduct");
+            }
+            get
+            {
+                return _categoryOfSelectedProduct;
+            }
+        }
+        private RelayCommand _addCategory;
+        public RelayCommand AddCategory
+        {
+            get
+            {
+                return _addCategory ?? (_addCategory = new RelayCommand(obj =>
+                {
+                    Category newCategory = obj as Category;
+                    Categories.Add(newCategory);
+                    _categoriesRepo.AddNewCategory(newCategory);
+                }));
+            }
+        }
+        private RelayCommand _editCategory;
+        public RelayCommand EditCategory
+        {
+            get
+            {
+                return _editCategory ?? (_editCategory = new RelayCommand(obj =>
+                {
+                    int categoryId = SelectedCategory.Id;
+                    Category newCategory = obj as Category;
+                    _categoriesRepo.EditCategory(categoryId, newCategory);
+                },
+                (obj) => Categories.Count > 0));
+            }
+        }
+        private RelayCommand _delCategory;
+        public RelayCommand  DelCategory
+        {
+            get
+            {
+                return _delCategory ?? (_delCategory = new RelayCommand(obj =>
+                {
+                    if(SelectedCategory != null)
+                    {
+                        _categoriesRepo.DelCategory(SelectedCategory.Id);
+                        Categories.Remove(SelectedCategory);
+                    }
+                },
+                (obj) => Categories.Count > 0));
+            }
+        }
         public CategoriesViewModel(ICategoriesRepo categoriesRepo)
         {
             _categoriesRepo = categoriesRepo;
@@ -37,6 +95,10 @@ namespace GoodsCatalog.ViewModel
             {
                 Categories.Add(category);
             }
+        }
+        public Category FindCategoryOfSelectedProduct(Product selectedProduct)
+        {
+            return Categories.FirstOrDefault(c => c.Id == selectedProduct?.Id);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

@@ -7,6 +7,7 @@ using Dapper;
 using GoodsCatalog.Models;
 using GoodsCatalog.Repos.Interfaces;
 using GoodsCatalog.Dapper;
+using System.Data;
 
 namespace GoodsCatalog.Repos.Implements
 {
@@ -18,12 +19,11 @@ namespace GoodsCatalog.Repos.Implements
             paramList.Add("@productName", newProduct.Name);
             paramList.Add("@size", newProduct.Size);
             paramList.Add("@color", newProduct.Color);
-            paramList.Add("@price", newProduct.Price);
             paramList.Add("@material", newProduct.Material);
+            paramList.Add("@price", newProduct.Price);
             paramList.Add("@categoryId", newProduct.CategoryId);
             paramList.Add("@brandId", newProduct.BrandId);
             paramList.Add("@description", newProduct.Description);
-            paramList.Add("@photo", newProduct.Photo);
             QueryManager.ExecuteDml("AddNewProduct", paramList);
         }
 
