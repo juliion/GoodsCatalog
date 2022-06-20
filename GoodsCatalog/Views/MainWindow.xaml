@@ -77,7 +77,7 @@
             <ContentControl x:Name="SelectedItemHelperBrand" Content="{Binding BrandsVM.SelectedBrand, Mode=OneWayToSource}" Visibility="Collapsed"/>
             <TreeView x:Name="BrandsList" BorderBrush="White"
                   SelectedItemChanged="BrandsList_SelectedItemChanged">
-                <TreeViewItem Header="Бренды"
+                <TreeViewItem Header="Бренди"
                           ItemsSource="{Binding BrandsVM.Brands}"
                           DisplayMemberPath="Name">
                 </TreeViewItem>
