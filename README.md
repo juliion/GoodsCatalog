@@ -83,6 +83,6 @@ GoogsCatalog є навчальним додатком WPF, у ньому є ка
 ### Автор
 **Іонова Юлія**  
 
-LinkedIn: [Julia Ionova](https://www.linkedin.com/in/julia-ionova-1297aa196/)  
-Telegram: [@julia_io](https://t.me/julia_io)  
-Email: [juliaionova111@gmail.com](mailto:juliaionova111@gmail.com)
+LinkedIn: [Julia Ionova](https://www.linkedin.com/in/julia-ionova-1297aa196/)  
+Telegram: [@julia_io](https://t.me/julia_io)  
+Email: [juliaionova111@gmail.com](mailto:juliaionova111@gmail.com)  
